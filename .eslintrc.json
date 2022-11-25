@@ -56,5 +56,6 @@
         "react-hooks/exhaustive-deps": "warn",
         "import/prefer-default-export": "off",
         "react/prop-types": "off"
-    }
+    },
+    "ignorePatterns": ["setupProxy.js", "constants.ts"]
 }
