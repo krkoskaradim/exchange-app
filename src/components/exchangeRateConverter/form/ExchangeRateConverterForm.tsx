@@ -80,7 +80,7 @@ export function ExchangeRateConverterForm({ exchangeRates }: ExchangeRateConvert
             <form
                 onSubmit={formik.handleSubmit}
             >
-                <Box component="form">
+                <Box>
                     <ExchangeRateAmountInCZK name="amountInCZK" />
                     <ExchangeRateCurrencySelect name="currencyCode" exchangeRates={exchangeRates} />
                 </Box>

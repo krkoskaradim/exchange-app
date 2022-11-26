@@ -24,10 +24,12 @@ export function ExchangeRatesList({ exchangeRates }: ExchangeRatesListProps): JS
             <TableContainer>
                 <Table>
                     <TableHead>
-                        <TableCell>Country</TableCell>
-                        <TableCell>Code</TableCell>
-                        <TableCell>Amount</TableCell>
-                        <TableCell>Rate</TableCell>
+                        <TableRow>
+                            <TableCell>Country</TableCell>
+                            <TableCell>Code</TableCell>
+                            <TableCell>Amount</TableCell>
+                            <TableCell>Rate</TableCell>
+                        </TableRow>
                     </TableHead>
                     <TableBody>
                         {exchangeRates.map((el) => <ExchangeRateElementRow exchangeRate={el} key={el.code} />)}

@@ -26,10 +26,10 @@ export function ExchangeRatesView(): JSX.Element {
             justifyContent="space-around"
             spacing={4}
         >
-            <Grid item sm={12} md={12} lg={8}>
+            <Grid item sm={12} md={12} lg={7}>
                 <ExchangeRatesList exchangeRates={data || []} />
             </Grid>
-            <Grid item sm={12} md={12} lg={4}>
+            <Grid item sm={12} md={12} lg={5}>
                 <StickyWrapper>
                     <ExchangeRateConverter exchangeRates={data || []} />
                 </StickyWrapper>
