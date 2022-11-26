@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import {
-    Button,
-    TextField,
+    Box,
+    Button, Paper,
+    TextField, Typography,
 } from '@mui/material';
 import {
     FormikProvider, useFormik,
 } from 'formik';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
+import styled from 'styled-components';
 import { ExchangeRate } from '../../../hooks/useExchangeRatesData';
-import { StyledFormControl } from '../../styled/FormInputs';
 import { ExchangeRateCurrencySelect } from './ExchangeRateCurrencySelect';
+import { ExchangeRateAmountInCZK } from './ExchangeRateAmountInCZK';
 
 export interface ExchangeRateConverterFormSchema {
     amountInCZK: number
@@ -21,12 +23,22 @@ export interface ExchangeRateConverterFormProps {
     exchangeRates: ExchangeRate[]
 }
 
+const Wrapper = styled(Paper)`
+    margin: 2rem;
+    text-align: center;
+    justify-content: center;
+`;
+
+const StyledTypography = styled(Typography)`
+    min-height: 1ch;
+`;
+
 export function ExchangeRateConverterForm({ exchangeRates }: ExchangeRateConverterFormProps): JSX.Element {
     const [result, setResult] = useState<number | null>(null);
 
     const validationSchema: SchemaOf<ExchangeRateConverterFormSchema> = Yup.object().shape({
-        amountInCZK: Yup.number().required().min(0),
-        currencyRate: Yup.number().required().min(0),
+        amountInCZK: Yup.number().required().moreThan(0),
+        currencyRate: Yup.number().required().moreThan(0),
     });
 
     const initialValues: ExchangeRateConverterFormSchema = {
@@ -45,23 +57,19 @@ export function ExchangeRateConverterForm({ exchangeRates }: ExchangeRateConvert
     });
 
     return (
-        <FormikProvider value={formik}>
-            <form
-                onSubmit={formik.handleSubmit}
-            >
-                <StyledFormControl>
-                    <TextField
-                        id="amountInCZK"
-                        name="amountInCZK"
-                        label="Amount in CZK"
-                        type="number"
-                        onChange={formik.handleChange}
-                    />
-                </StyledFormControl>
-                <ExchangeRateCurrencySelect exchangeRates={exchangeRates || []} />
-                <Button type="submit">Submit</Button>
-            </form>
-            {result}
-        </FormikProvider>
+        <Wrapper>
+            <FormikProvider value={formik}>
+                <form
+                    onSubmit={formik.handleSubmit}
+                >
+                    <Box component="form">
+                        <ExchangeRateAmountInCZK name="amountInCZK" />
+                        <ExchangeRateCurrencySelect name="currencyRate" exchangeRates={exchangeRates} />
+                    </Box>
+                    <Button type="submit">Convert</Button>
+                </form>
+                <StyledTypography>{result}</StyledTypography>
+            </FormikProvider>
+        </Wrapper>
     );
 }
