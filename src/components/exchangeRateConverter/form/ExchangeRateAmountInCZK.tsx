@@ -10,7 +10,8 @@ export interface ExchangeRateAmountInCZKProps {
 
 const StyledTextField = styled(TextField)`
   && {
-    width: 20ch
+    width: 20ch;
+    margin: 1rem;
   }
 `;
 export function ExchangeRateAmountInCZK({ name }: ExchangeRateAmountInCZKProps): JSX.Element {

@@ -14,7 +14,8 @@ export interface ExchangeRateCurrencySelectParams {
 
 const StyledTextField = styled(TextField)`
   && {
-    width: 15ch
+    width: 15ch;
+    margin: 1rem;
   }
 `;
 
