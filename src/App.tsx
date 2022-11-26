@@ -1,15 +1,13 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { ExchangeRatesList } from './components/exchangeRatesView/item/ExchangeRatesList';
-import { ExchangeRateConverterForm } from './components/exchangeRateConverter/form/ExchangeRateConverterForm';
+import { ExchangeRatesView } from './components/exchangeRatesView/ExchangeRatesView';
 
 const queryClient = new QueryClient();
 
 function App(): JSX.Element {
     return (
         <QueryClientProvider client={queryClient}>
-            <ExchangeRatesList />
-            <ExchangeRateConverterForm />
+            <ExchangeRatesView />
         </QueryClientProvider>
     );
 }

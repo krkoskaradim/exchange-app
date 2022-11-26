@@ -8,7 +8,7 @@ import {
 } from 'formik';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
-import { useExchangeRatesData } from '../../../hooks/useExchangeRatesData';
+import { ExchangeRate } from '../../../hooks/useExchangeRatesData';
 import { StyledFormControl } from '../../styled/FormInputs';
 import { ExchangeRateCurrencySelect } from './ExchangeRateCurrencySelect';
 
@@ -17,9 +17,11 @@ export interface ExchangeRateConverterFormSchema {
     currencyRate: number
 }
 
-export function ExchangeRateConverterForm(): JSX.Element {
-    const { isLoading, data } = useExchangeRatesData();
+export interface ExchangeRateConverterFormProps {
+    exchangeRates: ExchangeRate[]
+}
 
+export function ExchangeRateConverterForm({ exchangeRates }: ExchangeRateConverterFormProps): JSX.Element {
     const [result, setResult] = useState<number | null>(null);
 
     const validationSchema: SchemaOf<ExchangeRateConverterFormSchema> = Yup.object().shape({
@@ -56,7 +58,7 @@ export function ExchangeRateConverterForm(): JSX.Element {
                         onChange={formik.handleChange}
                     />
                 </StyledFormControl>
-                <ExchangeRateCurrencySelect exchangeRates={data || []} />
+                <ExchangeRateCurrencySelect exchangeRates={exchangeRates || []} />
                 <Button type="submit">Submit</Button>
             </form>
             {result}
