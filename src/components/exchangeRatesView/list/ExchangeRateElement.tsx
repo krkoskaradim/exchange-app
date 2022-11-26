@@ -3,7 +3,7 @@ import {
     Box, Card, Stack, ListItem, Tooltip,
 } from '@mui/material';
 import styled from 'styled-components';
-import { ExchangeRate } from '../hooks/useExchangeRatesData';
+import { ExchangeRate } from '../../../hooks/useExchangeRatesData';
 
 export interface ExchangeRateElementParams {
     exchangeRate: ExchangeRate

@@ -1,7 +1,7 @@
 import React from 'react';
 import { CircularProgress } from '@mui/material';
-import { useExchangeRatesData } from '../hooks/useExchangeRatesData';
-import { ExchangeRateElement } from './ExchangeRateElement';
+import { useExchangeRatesData } from '../../../hooks/useExchangeRatesData';
+import { ExchangeRateElement } from '../list/ExchangeRateElement';
 
 export function ExchangeRatesList(): JSX.Element {
     const { isLoading, data } = useExchangeRatesData();
