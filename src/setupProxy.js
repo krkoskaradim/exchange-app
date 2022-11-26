@@ -1,5 +1,4 @@
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const { CONSTANTS } = require('./constants');
 
 const proxy = {
     target: 'https://www.cnb.cz',
@@ -7,7 +6,7 @@ const proxy = {
 };
 module.exports = function (app) {
     app.use(
-        CONSTANTS.API.EXCHANGE_RATES_LIST,
+        '/en/financial-markets/foreign-exchange-market',
         createProxyMiddleware(proxy),
     );
 };
