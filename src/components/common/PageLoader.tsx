@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const StyledBackdrop = styled(Backdrop)`
     && {
-      color: #FF4500FF;
+      color: #3f50b5;
     }
 `;
 

@@ -14,26 +14,11 @@ const Wrapper = styled(Paper)`
     text-align: center;
 `;
 
-const StyledResult = styled(Typography)`
-    padding: 3rem;
-`;
-
 export function ExchangeRateConverter({ exchangeRates }: ExchangeRateConverterProps): JSX.Element {
-    const [result, setResult] = useState<number | null>(0);
-
-    const onSubmit = ({ amountInCZK, currencyRate }: ExchangeRateConverterFormSchema): void => {
-        setResult(((amountInCZK / currencyRate) || 0));
-    };
-
     return (
         <Wrapper>
             <StyledTitle variant="h2">Convert CZK</StyledTitle>
-            <ExchangeRateConverterForm onSubmit={onSubmit} exchangeRates={exchangeRates} />
-            <StyledResult variant="h4">
-                {result?.toFixed(3)}
-                {' '}
-                CZK
-            </StyledResult>
+            <ExchangeRateConverterForm exchangeRates={exchangeRates} />
         </Wrapper>
     );
 }

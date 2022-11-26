@@ -26,6 +26,7 @@ export function ExchangeRateAmountInCZK({ name }: ExchangeRateAmountInCZKProps):
                 name={name}
                 label="Amount in CZK"
                 type="number"
+                value={field.value}
                 onChange={field.onChange}
                 error={isError}
                 helperText={isError && error}

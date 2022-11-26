@@ -21,9 +21,8 @@ const StyledTextField = styled(TextField)`
 
 export function ExchangeRateCurrencySelect({ exchangeRates, name }: ExchangeRateCurrencySelectParams): JSX.Element {
     const [field, { error, touched }] = useField(name);
-
     const options = exchangeRates
-        ?.map(({ amount, rate, code }) => <MenuItem key={code} value={rate / amount}>{code}</MenuItem>);
+        ?.map(({ code }) => <MenuItem key={code} value={code}>{code}</MenuItem>);
 
     const isError = !!(error && touched);
 
