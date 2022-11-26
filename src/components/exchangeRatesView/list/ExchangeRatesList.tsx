@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import {
     Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
@@ -16,6 +16,11 @@ const StyledBox = styled.div`
 `;
 
 export function ExchangeRatesList({ exchangeRates }: ExchangeRatesListProps): JSX.Element {
+    const exchangeRateRows = useMemo(
+        () => exchangeRates.map((el) => <ExchangeRateElementRow exchangeRate={el} key={el.code} />),
+        [exchangeRates],
+    );
+
     return (
         <StyledBox>
             <StyledTitle variant="h2">
@@ -32,7 +37,7 @@ export function ExchangeRatesList({ exchangeRates }: ExchangeRatesListProps): JS
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {exchangeRates.map((el) => <ExchangeRateElementRow exchangeRate={el} key={el.code} />)}
+                        {exchangeRateRows}
                     </TableBody>
                 </Table>
             </TableContainer>
