@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Paper, Typography } from '@mui/material';
+import React from 'react';
+import { Paper } from '@mui/material';
 import styled from 'styled-components';
 import { ExchangeRate } from '../../hooks/useExchangeRatesData';
-import { ExchangeRateConverterForm, ExchangeRateConverterFormSchema } from './form/ExchangeRateConverterForm';
+import { ExchangeRateConverterForm } from './form/ExchangeRateConverterForm';
 import { StyledTitle } from '../styled/Typography';
 
 export interface ExchangeRateConverterProps {
