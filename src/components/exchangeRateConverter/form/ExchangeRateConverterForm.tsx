@@ -4,7 +4,7 @@ import {
     Button, Typography,
 } from '@mui/material';
 import {
-    FormikProvider, useField, useFormik,
+    FormikProvider, useFormik,
 } from 'formik';
 import * as Yup from 'yup';
 import { SchemaOf } from 'yup';
@@ -27,24 +27,20 @@ const StyledResult = styled(Typography)`
     padding: 3rem;
 `;
 
-function ExchangeRateResult({ result }: {result: number | null}): JSX.Element {
-    const [field] = useField('currencyCode');
-
+function ExchangeRateResult({ result }: {result: string | null}): JSX.Element {
     if (!result) {
         return <StyledResult />;
     }
 
     return (
         <StyledResult variant="h4">
-            {result?.toFixed(3)}
-            {' '}
-            {field.value}
+            {result}
         </StyledResult>
     );
 }
 
 export function ExchangeRateConverterForm({ exchangeRates }: ExchangeRateConverterFormProps): JSX.Element {
-    const [result, setResult] = useState<number | null>(0);
+    const [result, setResult] = useState<string | null>(null);
 
     const exchangeRatesByCodeId = useMemo(
         () => new Map<string, ExchangeRate>(exchangeRates.map((el) => [el.code, el])),
@@ -55,7 +51,7 @@ export function ExchangeRateConverterForm({ exchangeRates }: ExchangeRateConvert
         const exchangeRate = exchangeRatesByCodeId.get(currencyCode);
 
         if (exchangeRate) {
-            setResult((((amountInCZK / exchangeRate.rate) * exchangeRate.amount) || 0));
+            setResult(`${(((amountInCZK / exchangeRate.rate) * exchangeRate.amount) || 0).toFixed(3)} ${currencyCode}`);
         }
     };
 
