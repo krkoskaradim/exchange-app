@@ -1,4 +1,5 @@
 import React from 'react';
+import { CircularProgress } from '@mui/material';
 import { useExchangeRatesData } from '../hooks/useExchangeRatesData';
 import { ExchangeRateElement } from './ExchangeRateElement';
 
@@ -7,9 +8,7 @@ export function ExchangeRatesList(): JSX.Element {
 
     if (isLoading) {
         return (
-            <h2>
-                Loading ...
-            </h2>
+            <CircularProgress />
         );
     }
     return (
